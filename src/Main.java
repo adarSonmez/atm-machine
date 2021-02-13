@@ -21,8 +21,7 @@ public class Main {
         file.createNewFile();
 
         // Determine the working hours of the system
-        while (hourOfDay >= 9 && hourOfDay < 22
-        ) {
+        while (hourOfDay >= 9 && hourOfDay < 17) {
             System.out.print("Enter 1 to create a new account, or enter 2 to trade your current account: ");
             int userStatus = input.nextInt();
             while (userStatus != 1 && userStatus != 2 && userStatus != 3) {
