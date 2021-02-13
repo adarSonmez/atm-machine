@@ -17,8 +17,7 @@ public class Main {
         int id = 0;
         Account[] accounts = new Account[1000];
         File file = new File("accounts.txt");
-        file.delete();
-        file.createNewFile();
+        if (file.delete() && file.createNewFile()) nothing();
 
         // Determine the working hours of the system
         while (hourOfDay >= 9 && hourOfDay < 17) {
@@ -131,5 +130,9 @@ public class Main {
         FileWriter printer = new FileWriter(file, true);
         printer.write("ID: " + id + ", Balance: " + balance + "\n");
         printer.close();
+    }
+
+    public static void nothing() {
+        // nothing
     }
 }
