@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-public class Main {
+strictfp class Main {
     public static void main(String[] args) throws IOException {
         Scanner input = new Scanner(System.in);
         GregorianCalendar calendar = new GregorianCalendar();
@@ -49,9 +49,13 @@ public class Main {
 
     public static void newAccount(Account[] a, int id, Scanner input, File file) throws IOException {
         a[id] = new Account(id, 0);
-        System.out.print("Set your password (must be a 4-digit number): ");
-        long password = input.nextInt();
-        a[id].setPassword(password);
+        long password = 0;
+
+        while (String.valueOf(password).length() != 4) {
+            System.out.print("Set your password (must be a 4-digit number): ");
+            password = input.nextInt();
+            a[id].setPassword(password);
+        }
 
         System.out.println("You have successfully registered in our system.");
         System.out.println("Your id is " + a[id].getId());
@@ -106,7 +110,7 @@ public class Main {
 
     public static void executeTransaction(int c, Account[] a, int id, Scanner input, File file) throws IOException {
         switch (c) {
-            // Viewing the current balance
+            // Viewing current balance
             case 1 -> System.out.println("The balance is " + a[id].getBalance());
             // Withdraw money
             case 2 -> {
